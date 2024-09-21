@@ -24,6 +24,9 @@
   # Enable networking
   networking.networkmanager.enable = true;
 
+  # Enable hardware virtualisation
+  virtualisation.docker.enable = true;
+
   # Set your time zone.
   time.timeZone = "Europe/Brussels";
 
@@ -88,7 +91,7 @@
       discord
       vscode
       git
-      gnupg
+      docker
     ];
   };
 
@@ -109,16 +112,18 @@
   environment.systemPackages = with pkgs; [
     vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     libreoffice
-    ungoogled-chromium 
+    ungoogled-chromium
+    wine-wayland
+    mono 
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
-  # programs.gnupg.agent = {
-  #   enable = true;
-  #   enableSSHSupport = true;
-  # };
+  programs.gnupg.agent = {
+    enable = true;
+  #  enableSSHSupport = true;
+  };
 
   # List services that you want to enable:
 
